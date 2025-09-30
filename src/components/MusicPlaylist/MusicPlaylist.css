@@ -1,0 +1,24 @@
+.playlist {
+    display: block;
+    width: 1000px;
+    border-radius: 5px;
+    /* background-color: indigo; */
+    background-image: linear-gradient(indigo, rgb(32, 2, 53));
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+    -webkit-box-shadow: 4px 4px 35px 0px rgba(38, 131, 202, 0.2);
+    -moz-box-shadow: 4px 4px 35px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 4px 35px 0px rgba(0, 0, 0, 0.2);;
+}
+
+#playlist_name {
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    background-color: indigo;
+    color: white;
+    padding: 3px 5px;
+}

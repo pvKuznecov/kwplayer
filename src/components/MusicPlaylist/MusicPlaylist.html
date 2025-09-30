@@ -1,0 +1,5 @@
+<div class="playlist">
+    <input type="text" name="playlist_name" id="playlist_name">
+    <MusicUploader @files-selected="onFilesSelected" />
+    <MusicPlayer :tracks="selectedTracks" />
+</div>

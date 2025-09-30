@@ -1,0 +1,12 @@
+.music_player {
+    width: 800px;
+    background-color: blueviolet;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+.music_player li {
+    text-align: right;
+    font-size: small;
+}
