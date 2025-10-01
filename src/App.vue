@@ -1,16 +1,18 @@
 <template>
     <div id="app">
-        <MusicPlaylist/>
+        <!-- <MusicPlaylist/> -->
+        <MainView/>
     </div>
 </template>
 <style src="./main.css"></style>
 <script>
-    import MusicPlaylist from './components/MusicPlaylist/MusicPlaylist.vue';
+    // import MusicPlaylist from './components/MusicPlaylist/MusicPlaylist.vue';
+    import MainView from './view/MainView/MainView.vue';
 
     export default {
         name: 'App',
         components: {
-            MusicPlaylist
+            MainView
         },
     };
 </script>

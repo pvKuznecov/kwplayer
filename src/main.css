@@ -8,22 +8,6 @@ body {
     margin: 0;
     background-color: rgb(12, 142, 218);
 }
-/* @-webkit-keyframes displace {
-  from {
-    background-position: 0 center;
-  }
-  to {
-    background-position: 100% center;
-  }
-}
-@keyframes displace {
-  from {
-    background-position: 0 center;
-  }
-  to {
-    background-position: 100% center;
-  }
-} */
 
 #app {
     -webkit-animation: displace 10s linear infinite;
@@ -33,5 +17,5 @@ body {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
+    margin-top: 2rem;
 }

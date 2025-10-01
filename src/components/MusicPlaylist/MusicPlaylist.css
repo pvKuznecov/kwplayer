@@ -10,7 +10,7 @@
     /* padding: 1rem; */
     -webkit-box-shadow: 4px 4px 35px 0px rgba(38, 131, 202, 0.2);
     -moz-box-shadow: 4px 4px 35px 0px rgba(34, 60, 80, 0.2);
-    box-shadow: 4px 4px 35px 0px rgba(0, 0, 0, 0.2);;
+    box-shadow: 4px 4px 35px 0px rgba(0, 0, 0, 0.2);
 }
 
 .playlist_name {
@@ -22,6 +22,7 @@
     padding: 3px 5px;
     /* background-color: indigo;
     color: rgb(174, 173, 175); */
+    color: white;
 }
 
 .controlpanel {
@@ -40,13 +41,45 @@
     /* display: inline-block; */
     width: 100px;
     height: 100px;
-    background-color: aquamarine;
+    background-color: white;
+    border-radius: 5px;
+    -webkit-box-shadow: -1px -1px 20px 4px rgba(34, 60, 80, 0.28) inset;
+    -moz-box-shadow: -1px -1px 20px 4px rgba(34, 60, 80, 0.28) inset;
+    box-shadow: -1px -1px 20px 4px rgba(34, 60, 80, 0.28) inset;
 }
 
 .f_panel {
     /* display: inline-block; */
     width: calc(100% - 100px);
-    background-color: white;
+    /* background-color: white; */
+    border-radius: 5px;
+    /* -webkit-box-shadow: -1px -1px 20px 4px rgba(34, 60, 80, 0.28) inset;
+    -moz-box-shadow: -1px -1px 20px 4px rgba(34, 60, 80, 0.28) inset;
+    box-shadow: -1px -1px 20px 4px rgba(34, 60, 80, 0.28) inset; */
+}
+
+.track_buttons_elem {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    /* border: 1px solid white; */
+    color: white;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.track_buttons_elem svg:active {
+    color: rgb(238, 238, 238);
+}
+
+.track_volume_elem {
+    display: inline-block;
+    height: 40px;
+    /* border: 1px solid white; */
+    float: right;
+    padding-right: 10px;
 }
 
 .track_name {
@@ -78,7 +111,7 @@
 
 .playlist_arr {
     display: block;
-    width: 99%;
+    width: 98%;
     min-height: 30px;
     margin-left: auto;
     margin-right: auto;

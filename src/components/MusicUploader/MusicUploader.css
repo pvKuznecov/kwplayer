@@ -2,3 +2,22 @@
     display: block;
     background-color: aquamarine;
 }
+
+.custom-file-upload {
+    display: block;
+    width: 200px;
+    height: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 3px 5px;
+    -webkit-box-shadow: 4px 4px 35px 0px rgba(38, 131, 202, 0.2);
+    -moz-box-shadow: 4px 4px 35px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 4px 35px 0px rgba(0, 0, 0, 0.2);
+}
+.custom-file-upload input[type="file"] {
+        display: none; /* Или opacity: 0; и position: absolute; */
+    }

@@ -6,6 +6,8 @@
         props: ['tracks'], // Переданные нам треки
         computed: {
             preparedTracks() {
+                console.log("tracks", this.tracks);
+
                 return this.tracks.map(track => ({
                     id: track.id || track.name, // Используйте ID или имя, если ID нет
                     name: track.name,           // Название трека
@@ -13,5 +15,11 @@
                 }));
             },
         },
+        methods: {
+            SelectedTrack(trVal) {
+                console.log("trVal", trVal);
+                this.$emit("selected-track", trVal);
+            }
+        }
     };
 </script>

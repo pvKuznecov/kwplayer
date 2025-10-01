@@ -1,24 +1,12 @@
 <template src="./MainView.html"></template>
 <style src="./MainView.css"></style>
 <script>
-    import MusicPlayer from '@/components/MusicPlayer/MusicPlayer.vue';
-    import MusicUploader from '@/components/MusicUploader/MusicUploader.vue';
+    import MusicPlaylist from '@/components/MusicPlaylist/MusicPlaylist.vue';
 
     export default {
         name: 'MainView',
         components: {
-            MusicUploader,
-            MusicPlayer
+            MusicPlaylist
         },
-        data() {
-            return {
-                selectedTracks: []
-            };
-        },
-        methods: {
-            onFilesSelected(files) {
-                this.selectedTracks = files.filter(file => file.type === 'audio/mp3');
-            }
-        }
     };
 </script>

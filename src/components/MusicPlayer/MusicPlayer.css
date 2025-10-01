@@ -1,15 +1,22 @@
 .music_player {
     display: block;
-    background-color: blueviolet;
     margin-left: auto;
     margin-right: auto;
-    color: white;
     border-radius: 5px;
     padding: 3px;
+    background-color: white;
+    -webkit-box-shadow: -1px -1px 33px 4px rgba(34, 60, 80, 0.28) inset;
+    -moz-box-shadow: -1px -1px 33px 4px rgba(34, 60, 80, 0.28) inset;
+    box-shadow: -1px -1px 33px 4px rgba(34, 60, 80, 0.28) inset;
+    margin-bottom: 5px;
 }
 
 .music_player table {
-    width: 100%;    
+    width: 100%;
+}
+
+.music_player tr {
+    background-color: rgba(28, 189, 253, 0.089);
 }
 
 .music_player td {
