@@ -12,15 +12,14 @@
         },
         data() {
             return {
-                selectedTracks: []
+                Playlist: { name: "New playlist" },
+                selectedTracks: [],
+                EditPlaylistMode: false,
             };
         },
         methods: {
             onFilesSelected(files) {
-                console.log("files", files);
-                console.log("aaa", files.filter(file => file.type === 'audio/mpeg'));
                 this.selectedTracks = files.filter(file => file.type === 'audio/mpeg');
-                console.log("selectedTracks", this.selectedTracks);
             }
         }
     }

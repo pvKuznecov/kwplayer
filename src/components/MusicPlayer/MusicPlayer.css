@@ -1,12 +1,18 @@
 .music_player {
-    width: 800px;
+    display: block;
     background-color: blueviolet;
     margin-left: auto;
     margin-right: auto;
     color: white;
+    border-radius: 5px;
+    padding: 3px;
 }
 
-.music_player li {
+.music_player table {
+    width: 100%;    
+}
+
+.music_player td {
     text-align: right;
     font-size: small;
 }

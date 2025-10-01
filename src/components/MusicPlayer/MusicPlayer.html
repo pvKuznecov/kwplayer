@@ -1,9 +1,14 @@
 <div class="music_player">
-    <ol>
-        <li v-for="track in preparedTracks" :key="track.id">
-            {{ track.name }} <!-- выводим название трека -->
-            <!-- используем свойство url для хранения URL -->
-            <audio controls :src="track.url" /> 
-        </li>
-    </ol>
+    <table>
+        <tbody>
+            <tr v-for="track in preparedTracks" :key="track.id">
+                <td>0</td>
+                <td style="text-align: right;">
+                    {{ track.name }} <!-- выводим название трека -->
+                    <!-- используем свойство url для хранения URL -->
+                    <audio controls :src="track.url" />     
+                </td>                
+            </tr>
+        </tbody>
+    </table>
 </div>
