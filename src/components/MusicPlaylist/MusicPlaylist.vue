@@ -16,7 +16,8 @@
                 TargetTrack: false,
                 selectedTracks: [],
                 EditPlaylistMode: false,
-                Volume: "0.80"
+                Volume: "0.80",
+                Play: false
             };
         },
         computed: {
@@ -37,10 +38,12 @@
             PlayerAction_Play() {
                 let AudioElement = document.querySelector('#main_audio');
                 AudioElement.play();
+                this.Play = true;
             },
             PlayerAction_Pause() {
                 let AudioElement = document.querySelector('#main_audio');
                 AudioElement.pause();
+                this.Play = false;
             },
         }
     }
