@@ -17,9 +17,12 @@
                     </td>
                     <td class="f_panel">
                         <div class="track_name">{{TargetTrack.name}}</div>
+                        <div class="track_time">
+                            <i>{{(TrackTime && TrackTime.current !== 0) ? TrackTime.current : '00'}}</i> / <i>{{(TrackTime && TrackTime.all !== 0) ? TrackTime.all : '00'}}</i>
+                        </div>
                         <div class="track_timeline">
-                            <audio id="main_audio" controls :src="TargetTrack.url" style="display: none;" />
-                            <input class="track_rangetime" type="range" step="1" min="0" max="0" value="0">
+                            <audio id="main_audio" controls :src="TargetTrack.url" style="display: none;" :volume="VolumeLvl" />
+                            <input class="track_rangetime" type="range" min="0" max="1" step="0.01" />
                         </div>
                         <div class="track_buttons">
                             <div class="track_buttons_elem">
@@ -48,7 +51,23 @@
                                 </svg>
                             </div>
                             <div class="track_volume_elem">
-                                <input class="track_rangevolume" type="range" step="0.01" min="0" max="1" :value="Volume">
+                                <div class="track_buttons_elem" @click="PlayerAction_VolMinus()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                    </svg>
+                                </div>
+                                <!-- <input type="button" value="-" @click="PlayerAction_VolMinus()"> -->
+                                <!-- 📢:  -->
+                                <div class="track_buttons_elem">
+                                    {{VolumeLvl * 100}}%
+                                </div>
+                                <div class="track_buttons_elem" @click="PlayerAction_VolPlus()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                </div>                                
                             </div>
                         </div>
                     </td>

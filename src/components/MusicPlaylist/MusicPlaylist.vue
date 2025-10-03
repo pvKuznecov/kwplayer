@@ -16,8 +16,9 @@
                 TargetTrack: false,
                 selectedTracks: [],
                 EditPlaylistMode: false,
-                Volume: "0.80",
-                Play: false
+                VolumeLvl: 0.5,
+                Play: false,
+                TrackTime: { current: 0, all: 0}
             };
         },
         computed: {
@@ -25,7 +26,7 @@
                 const AudioElement = document.querySelector('#main_audio');
                 console.log("AudioElement", AudioElement.duration);
                 return true;
-            }
+            },
         },
         methods: {
             onFilesSelected(files) {
@@ -44,6 +45,23 @@
                 let AudioElement = document.querySelector('#main_audio');
                 AudioElement.pause();
                 this.Play = false;
+            },
+            PlayerAction_VolPlus() {
+                let AudioElement = document.querySelector('#main_audio');
+                if (this.VolumeLvl < 1) {
+                    // this.VolumeLvl += 0.1;
+                    this.VolumeLvl = parseFloat((this.VolumeLvl + 0.1).toFixed(1));
+                    console.log("VolumeLvl", this.VolumeLvl);
+                }
+                AudioElement.volume = this.VolumeLvl;
+            },
+            PlayerAction_VolMinus() {
+                let AudioElement = document.querySelector('#main_audio');
+                if (this.VolumeLvl > 0) {
+                    this.VolumeLvl = parseFloat((this.VolumeLvl - 0.1).toFixed(1));
+                    console.log("VolumeLvl", this.VolumeLvl);
+                }
+                AudioElement.volume = this.VolumeLvl;
             },
         }
     }
