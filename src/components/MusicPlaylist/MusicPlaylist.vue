@@ -33,8 +33,11 @@
                 this.selectedTracks = files.filter(file => file.type === 'audio/mpeg');
             },
             onSelectedTrack(trackData) {
-                // const AudioElement = document.querySelector('#main_audio');
-                this.TargetTrack = trackData;
+                if (this.TargetTrack.id !== trackData.id) {
+                    this.Play = false;
+                }
+                
+                this.TargetTrack = trackData;                
             },
             PlayerAction_Play() {
                 let AudioElement = document.querySelector('#main_audio');
