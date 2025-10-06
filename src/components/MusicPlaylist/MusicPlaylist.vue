@@ -18,8 +18,8 @@
                 EditPlaylistMode: false,
                 VolumeLvl: 0.5,
                 Play: false,
-                TrackTime: { current: "00", all: "00"},
-                RepeatMode: ""
+                TrackTime: { current: 0, all: "00"},
+                RepeatMode: "",
             };
         },
         computed: {
@@ -99,11 +99,11 @@
                 let AudioElement = document.querySelector('#main_audio');
                 let TrackTimeElement = document.querySelector('#main_tracktime');
 
-                console.log("AudioElement", (AudioElement) ? AudioElement.duration : false);
-                if (AudioElement) {
-                    TrackTimeElement.max = Math.trunc(AudioElement.duration);
-                }
-                console.log("TrackTimeElement", TrackTimeElement);
+                // this.TrackTime.current = (TrackTimeElement) ? TrackTimeElement.value : 0;
+                AudioElement.currentTime = TrackTimeElement.value;
+
+                console.log("1111 AudioElement", (AudioElement) ? AudioElement.duration : false);
+                console.log("TrackTimeElement", TrackTimeElement.value);
             }
             
         }

@@ -15,9 +15,9 @@
                 <i>{{(TrackTime && TrackTime.current !== 0) ? TrackTime.current : '00'}}</i> / <i>{{(TrackTime && TrackTime.all !== 0) ? TrackTime.all : '00'}}</i>
             </div>
             <div class="track_timeline">
-                <!-- <audio id="main_audio" controls style="float: left;" :src="TargetTrack.url" :volume="VolumeLvl" /> -->
-                <audio id="main_audio" controls :src="TargetTrack.url" style="display: none;" :volume="VolumeLvl" />
-                <input id="main_tracktime" class="track_rangetime" type="range" min="0" value="0" :input="Chng_TrackRangeTime()" />
+                <!-- <audio id="main_audio" controls :src="TargetTrack.url" :volume="VolumeLvl" :currentTime="TrackTime.current" /> -->
+                <audio id="main_audio" controls :src="TargetTrack.url" style="display: none;" :volume="VolumeLvl" :currentTime="TrackTime.current" />
+                <input id="main_tracktime" class="track_rangetime" type="range" min="0" :value="TrackTime.current" @change="Chng_TrackRangeTime()" />
             </div>
             <div class="track_buttons">
                 <div class="track_buttons_elem">
