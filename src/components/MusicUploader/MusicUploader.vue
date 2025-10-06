@@ -5,7 +5,7 @@
         name: 'MusicUploader',
         data() {
             return {
-                PlayList: false
+                PlayList: false,
             }
         },
         methods: {

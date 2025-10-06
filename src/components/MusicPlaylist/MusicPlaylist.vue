@@ -14,11 +14,12 @@
             return {
                 Playlist: { name: "New playlist" },
                 TargetTrack: false,
-                selectedTracks: [],
+                FindTracks: [],
                 EditPlaylistMode: false,
                 VolumeLvl: 0.5,
                 Play: false,
-                TrackTime: { current: 0, all: 0}
+                TrackTime: { current: "00", all: "00"},
+                RepeatMode: ""
             };
         },
         computed: {
@@ -30,14 +31,24 @@
         },
         methods: {
             onFilesSelected(files) {
-                this.selectedTracks = files.filter(file => file.type === 'audio/mpeg');
+                this.FindTracks = files.filter(file => file.type === 'audio/mpeg');
             },
             onSelectedTrack(trackData) {
                 if (this.TargetTrack.id !== trackData.id) {
                     this.Play = false;
+                    this.TargetTrack = trackData;
+
+                    setTimeout(() => {
+                        let AudioElement = document.querySelector('#main_audio');
+                        let TrackTimeElement = document.querySelector('#main_tracktime');
+
+                        if (AudioElement) {
+                            let CSec = Math.trunc(AudioElement.duration);
+                            TrackTimeElement.max = CSec;
+                            this.TrackTime = { current: 0, all: Math.trunc(CSec / 60) + ":" + CSec % 60};
+                        }
+                    }, 100);
                 }
-                
-                this.TargetTrack = trackData;                
             },
             PlayerAction_Play() {
                 let AudioElement = document.querySelector('#main_audio');
@@ -52,7 +63,6 @@
             PlayerAction_VolPlus() {
                 let AudioElement = document.querySelector('#main_audio');
                 if (this.VolumeLvl < 1) {
-                    // this.VolumeLvl += 0.1;
                     this.VolumeLvl = parseFloat((this.VolumeLvl + 0.1).toFixed(1));
                     console.log("VolumeLvl", this.VolumeLvl);
                 }
@@ -66,6 +76,36 @@
                 }
                 AudioElement.volume = this.VolumeLvl;
             },
+            Chng_RepeatMode() {
+                let AudioElement = document.querySelector('#main_audio');
+
+                switch (this.RepeatMode){
+                    case "":
+                        this.RepeatMode = "one";
+                        
+                        AudioElement.loop = true;
+                        break;
+                    case "one":
+                        this.RepeatMode = "all";
+                        AudioElement.loop = false;
+                        break;
+                    default:
+                        this.RepeatMode = "";
+                        AudioElement.loop = false;
+                        break;
+                }
+            },
+            Chng_TrackRangeTime() {
+                let AudioElement = document.querySelector('#main_audio');
+                let TrackTimeElement = document.querySelector('#main_tracktime');
+
+                console.log("AudioElement", (AudioElement) ? AudioElement.duration : false);
+                if (AudioElement) {
+                    TrackTimeElement.max = Math.trunc(AudioElement.duration);
+                }
+                console.log("TrackTimeElement", TrackTimeElement);
+            }
+            
         }
     }
 </script>
