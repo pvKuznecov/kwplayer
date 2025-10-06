@@ -10,6 +10,8 @@ body {
 }
 
 #app {
+    display: block;
+    width: 100%;
     -webkit-animation: displace 10s linear infinite;
     animation: displace 10s linear infinite;
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -17,5 +19,12 @@ body {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 2rem;
+    padding: 5px 0;
 }
+
+/* @media (max-width: 400px) {
+    #app {
+        width: 400px;
+    }
+
+} */

@@ -1,8 +1,8 @@
 <template>
-    <div id="app">
+    <!-- <div id="app"> -->
         <!-- <MusicPlaylist/> -->
         <MainView/>
-    </div>
+    <!-- </div> -->
 </template>
 <style src="./main.css"></style>
 <script>

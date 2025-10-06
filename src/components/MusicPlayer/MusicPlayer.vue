@@ -3,6 +3,11 @@
 <script>
     export default {
         name: 'MusicPlayer',
+        data() {
+            return {
+                STrack: false,
+            }
+        },
         props: ['tracks'], // Переданные нам треки
         computed: {
             preparedTracks() {
@@ -18,6 +23,7 @@
         methods: {
             SelectedTrack(trVal) {
                 console.log("trVal", trVal);
+                this.STrack = trVal;
                 this.$emit("selected-track", trVal);
             }
         }

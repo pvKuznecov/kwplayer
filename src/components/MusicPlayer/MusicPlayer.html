@@ -1,13 +1,9 @@
 <div class="music_player">
     <table>
         <tbody>
-            <tr v-for="(track, index) in preparedTracks" :key="track.id">
+            <tr v-for="(track, index) in preparedTracks" :key="track.id" :style="(track.id == this.STrack.id) ? 'background-color: rgb(227, 250, 160);' : ''">
                 <td @click="SelectedTrack(track)">{{index + 1}}</td>
-                <td @click="SelectedTrack(track)" style="text-align: right;">
-                    {{ track.name }} <!-- выводим название трека -->
-                    <!-- используем свойство url для хранения URL -->
-                    <!-- <audio controls :src="track.url" /> -->
-                </td>
+                <td @click="SelectedTrack(track)" style="text-align: right;">{{ track.name }}</td>
                 <td>00:00</td>   
             </tr>
         </tbody>

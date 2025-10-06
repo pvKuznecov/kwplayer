@@ -1,4 +1,17 @@
 .V_main {
-    width: 100%;
+    display: block;
+    width: 99%;
     height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 400px) {
+    .V_main {
+        display: block;
+        width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 }

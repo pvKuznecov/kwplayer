@@ -13,10 +13,11 @@
 
 .music_player table {
     width: 100%;
+    min-height: 50%;
 }
 
 .music_player tr {
-    background-color: rgba(28, 189, 253, 0.089);
+    background-color: rgba(227, 255, 160, 0.089);
 }
 
 .music_player td {
