@@ -311,7 +311,7 @@
         margin-right: auto; }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1201px) and (max-width: 1439px) {
     .playlist {
         width: 1190px;
         /* min-height: 900px; */
@@ -336,4 +336,57 @@
         width: 180px;
         margin-left: auto;
         margin-right: auto; }
+}
+
+@media (min-width: 1440px) {
+    .playlist {
+        width: 1400px;
+        max-width: 1405px;
+        /* min-height: 900px; */
+        margin-left: auto;
+        margin-right: auto; }
+
+    .playlist_name {
+        display: block;
+        margin-left: auto;
+        margin-right: auto; }
+
+    .controlpanel {
+        display: inline-block;
+        width: 400px;
+        height: auto;
+    }
+
+    .playlist_arr {
+        display: inline-block;
+        width: 950px;
+        min-height: 500px;
+    }
+
+    .f_cover {
+        display: block;
+        width: 390px;
+        height: 390px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: .5rem; }
+
+    .f_panel {
+        display: block;
+        width: 390px;
+        /* min-height: 1000px !important; */
+
+    }
+
+    #svg_cover {
+        width: 389px;
+        height: 389px; }
+
+    .track_buttons {
+        display: block;
+        width: 100%; }
+
+    .track_volume_elem {
+        display: block;
+        width: 100%; }
 }
