@@ -16,9 +16,9 @@
             </div>
             <div class="track_timeline">
                 <!-- <audio id="main_audio" controls :src="TargetTrack.url" :volume="VolumeLvl" :currentTime="TrackTime.current" /> -->
-                <audio id="main_audio" controls :src="TargetTrack.url" style="display: none;" :volume="VolumeLvl" :currentTime="TrackTime.current" @timeupdate="onTimeUpdate"  />
-                <input id="main_tracktime" class="track_rangetime" type="range" min="0" value="0" />
-                <!-- <input id="main_tracktime" class="track_rangetime" type="range" min="0" value="0" @change="Chng_TrackRangeTime()" /> -->
+                <!-- <audio id="main_audio" controls :src="TargetTrack.url" style="display: none;" :volume="VolumeLvl" :currentTime="TrackTime.current" @timeupdate="onTimeUpdate"  /> -->
+                <audio id="main_audio" controls :src="TargetTrack.url" style="display: none;" :volume="VolumeLvl" @timeupdate="onTimeUpdate"  />
+                <input id="main_tracktime" class="track_rangetime" type="range" min="0" value="0" @change="Chng_TrackRangeTime()" />
                 <!-- <input id="main_tracktime" class="track_rangetime" type="range" min="0" :value="TrackTime.current" @change="Chng_TrackRangeTime()" /> -->
             </div>
             <div class="track_buttons">
