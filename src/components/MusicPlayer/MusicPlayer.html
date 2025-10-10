@@ -1,10 +1,10 @@
 <div class="music_player">
     <table>
         <tbody>
-            <tr v-for="(track, index) in preparedTracks" :key="track.id" :style="(track.id == this.STrack.id) ? 'background-color: rgb(227, 250, 160);' : ''">
-                <td @click="SelectedTrack(track)">{{index + 1}}</td>
-                <td @click="SelectedTrack(track)" style="text-align: right;">{{ track.name }}</td>
-                <td>00:00</td>   
+            <tr v-for="(track, index) in preparedTracks" :key="track.id" :class="{ active: track.id == this.currentTrack.id }" @click="SelectedTrack(track)">
+                <td>{{index + 1}}</td>
+                <td style="text-align: right;">{{ track.name }}</td>
+                <td>00:00</td>
             </tr>
         </tbody>
     </table>

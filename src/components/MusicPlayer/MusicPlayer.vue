@@ -5,26 +5,25 @@
         name: 'MusicPlayer',
         data() {
             return {
-                STrack: false,
+                currentTrack: false,
             }
         },
         props: ['tracks'], // Переданные нам треки
         computed: {
             preparedTracks() {
-                console.log("tracks", this.tracks);
-
-                return this.tracks.map(track => ({
-                    id: track.id || track.name, // Используйте ID или имя, если ID нет
-                    name: track.name,           // Название трека
+                return this.tracks.map((track) => ({
+                    id: track.id || Math.random().toString(36).substr(2, 9),
+                    name: track.name,
                     url: URL.createObjectURL(track) // Создаем URL для воспроизведения
                 }));
             },
         },
         methods: {
-            SelectedTrack(trVal) {
-                console.log("trVal", trVal);
-                this.STrack = trVal;
-                this.$emit("selected-track", trVal);
+            SelectedTrack(track) {
+                if (this.currentTrack !== track) {   // проверяем, изменился ли выбор
+                    this.currentTrack = track;
+                    this.$emit("selected-track", track);
+                }
             }
         }
     };
