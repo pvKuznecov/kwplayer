@@ -18,7 +18,7 @@
                 EditPlaylistMode: false,
                 VolumeLvl: 0.5,
                 Play: false,
-                TrackTime: { current: 0, all: "00"},
+                TrackTime: { current: 0, duration: 0},
                 RepeatMode: "",
             };
         },
@@ -45,7 +45,7 @@
                         if (AudioElement) {
                             let CSec = Math.trunc(AudioElement.duration);
                             TrackTimeElement.max = CSec;
-                            this.TrackTime = { current: 0, all: Math.trunc(CSec / 60) + ":" + CSec % 60};
+                            this.TrackTime = { current: 0, duration: Math.trunc(CSec / 60) + ":" + CSec % 60};
                         }
                     }, 100);
                 }
@@ -101,9 +101,30 @@
 
                 // this.TrackTime.current = (TrackTimeElement) ? TrackTimeElement.value : 0;
                 AudioElement.currentTime = TrackTimeElement.value;
+            },
+            ShowerTime(iSec) {
+                if (iSec && typeof iSec == 'number') {
+                    let inpSec = Math.trunc(iSec);
+                    let strMin = (Math.trunc(inpSec / 60) < 10) ? ("0" + Math.trunc(inpSec / 60)) : Math.trunc(inpSec / 60);
+                    let strSec = (inpSec % 60 < 10) ? ("0" + (inpSec % 60)) : (inpSec % 60);
 
-                console.log("1111 AudioElement", (AudioElement) ? AudioElement.duration : false);
-                console.log("TrackTimeElement", TrackTimeElement.value);
+                    return strMin + ":" + strSec;
+                } else {
+                    return "00:00";
+                }
+            },
+            onTimeUpdate(event) {
+                const audio = event.target;
+                // Получаем текущую позицию воспроизведения и общую продолжительность
+                this.TrackTime.current = audio.currentTime;
+                this.TrackTime.duration = audio.duration || 0;
+
+                if (this.TrackTime.current == this.TrackTime.duration) {
+                    this.PlayerAction_Pause();
+                }
+      
+                let TrackTimeElement = document.querySelector('#main_tracktime');
+                TrackTimeElement.value = this.TrackTime.current;
             }
             
         }

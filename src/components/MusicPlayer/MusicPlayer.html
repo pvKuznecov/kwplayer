@@ -4,7 +4,7 @@
             <tr v-for="(track, index) in preparedTracks" :key="track.id" :class="{ active: track.id == this.currentTrack.id }" @click="SelectedTrack(track)">
                 <td>{{index + 1}}</td>
                 <td style="text-align: right;">{{ track.name }}</td>
-                <td>00:00</td>
+                <!-- <td>00:00</td> -->
             </tr>
         </tbody>
     </table>
