@@ -10,6 +10,11 @@
     margin-left: auto;
     margin-right: auto;
 }
+.track_info {
+    display: none;
+    width: 0;
+    height: 0;
+}
 
 .playlist_name {
     display: block;
@@ -340,9 +345,12 @@
 
 @media (min-width: 1440px) {
     .playlist {
+        display: flex;
         width: 1400px;
         max-width: 1405px;
         /* min-height: 900px; */
+        height: 900px;
+        padding: 3px;
         margin-left: auto;
         margin-right: auto; }
 
@@ -353,40 +361,70 @@
 
     .controlpanel {
         display: inline-block;
-        width: 400px;
-        height: auto;
+        width: 300px;
+        height: 900px;
     }
-
+    .track_info {
+        display: block;
+        width: 300px;
+        height: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: -1px -1px 33px 4px rgba(34, 60, 80, 0.28) inset;
+    }
+    .track_info table {
+        width: 100%;
+        height: 380px;
+        font-size: small;
+    }
     .playlist_arr {
         display: inline-block;
-        width: 950px;
-        min-height: 500px;
+        width: 1080px;
+        min-height: 890px;
+        max-height: 890px;
     }
 
     .f_cover {
         display: block;
-        width: 390px;
-        height: 390px;
+        width: 295px;
+        height: 295px;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: .5rem; }
+        margin-bottom: 5px;
+     }
 
     .f_panel {
         display: block;
-        width: 390px;
+        width: 300px;
+        height: 180px;
         /* min-height: 1000px !important; */
 
     }
+    
 
     #svg_cover {
-        width: 389px;
-        height: 389px; }
+        width: 290px;
+        height: 290px; }
 
     .track_buttons {
         display: block;
-        width: 100%; }
+        width: 100%;
+        height: 40px; }
 
     .track_volume_elem {
         display: block;
-        width: 100%; }
+        width: 100%;
+        height: 30px;
+     }
+
+    .tagkey {
+        text-align: left;
+        padding-left: 3px;
+    }
+
+    .tagval {
+        text-align: center;
+    };
 }

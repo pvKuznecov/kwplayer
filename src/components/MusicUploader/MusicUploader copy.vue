@@ -1,9 +1,6 @@
 <template src="./MusicUploader.html"></template>
 <style src="./MusicUploader.css"></style>
 <script>
-    // import { musicMetadata } from 'music-metadata';
-    import { parseBlob } from 'music-metadata';
-    
     export default {
         name: 'MusicUploader',
         data() {
@@ -11,11 +8,8 @@
                 PlayList: false,
             }
         },
-        // components: {
-        //     musicMetadata
-        // },
         methods: {
-            async handleFileSelect(event) {
+            handleFileSelect(event) {
                 const files = event.target.files;
                 let validFiles = [];
         
@@ -24,19 +18,6 @@
                     if (!this.isAudio(file)) {
                         console.log(`Файл ${file.name} не является аудиофайлом.`);
                         continue; // Переходим к следующему файлу
-                    }
-
-                    
-                    try {
-                        const blob = file.slice() 
-                        let parsedData = await parseBlob(blob); // 👈 Метод parse остался прежним
-                        
-                        // console.log("parsedData", parsedData);
-                        file.common = parsedData.common;
-                        
-                        
-                    } catch (error) {
-                        console.error('Ошибка при разборе файла:', error)
                     }
                     
                     validFiles.push(file); // Добавляем подходящий файл в массив

@@ -22,16 +22,10 @@
                 RepeatMode: "",
             };
         },
-        // computed: {
-        //     TTrackData() {
-        //         const AudioElement = document.querySelector('#main_audio');
-        //         console.log("AudioElement", AudioElement.duration);
-        //         return true;
-        //     },
-        // },
         methods: {
             onFilesSelected(files) {
                 this.FindTracks = files.filter(file => file.type === 'audio/mpeg');
+                console.log("FindTracks", this.FindTracks);
             },
             onSelectedTrack(trackData) {
                 if (this.TargetTrack.id !== trackData.id) {
