@@ -78,18 +78,18 @@
             </div>
         </div>
         <div class="track_info">
-            <table>
+            <table v-if="TargetTrack && TargetTrack.common">
                 <tbody>
-                    <tr><td class="tagkey">album:</td><td class="tagval">???</td></tr>
-                    <tr><td class="tagkey">albumartist:</td><td class="tagval">???</td></tr>
-                    <tr><td class="tagkey">artist:</td><td class="tagval">???</td></tr>
-                    <tr><td class="tagkey">artists:</td><td class="tagval">???</td></tr>
-                    <tr><td class="tagkey">date:</td><td class="tagval">???</td></tr>
-                    <tr><td class="tagkey">disk:</td><td class="tagval">???</td></tr>
-                    <tr><td class="tagkey">genre:</td><td class="tagval">???</td></tr>
-                    <tr><td class="tagkey">title:</td><td class="tagval">???</td></tr>
-                    <tr><td class="tagkey">track:</td><td class="tagval">???</td></tr>
-                    <tr><td class="tagkey">year:</td><td class="tagval">???</td></tr>
+                    <tr><td class="tagkey">{{TagsData.album}}:</td><td class="tagval">{{TargetTrack.common.album ?? ''}}</td></tr>
+                    <tr><td class="tagkey">albumartist:</td><td class="tagval">{{TargetTrack.common.albumartist ?? ''}}</td></tr>
+                    <tr><td class="tagkey">{{TagsData.artist}}:</td><td class="tagval">{{TargetTrack.common.artist ?? ''}}</td></tr>
+                    <tr><td class="tagkey">artists:</td><td class="tagval">{{TargetTrack.common.artists ?? ''}}</td></tr>
+                    <tr><td class="tagkey">date:</td><td class="tagval">{{TargetTrack.common.date ?? ''}}</td></tr>
+                    <tr><td class="tagkey">disk:</td><td class="tagval">{{TargetTrack.common.disk ?? ''}}</td></tr>
+                    <tr><td class="tagkey">{{TagsData.genre}}:</td><td class="tagval"><ul><li v-for="genreVal in TargetTrack.common.genre ?? array()">{{genreVal}}</li></ul></td></tr>
+                    <tr><td class="tagkey">{{TagsData.title}}:</td><td class="tagval">{{TargetTrack.common.title ?? ''}}</td></tr>
+                    <tr><td class="tagkey">track:</td><td class="tagval">{{TargetTrack.common.track ?? ''}}</td></tr>
+                    <tr><td class="tagkey">year:</td><td class="tagval">{{TargetTrack.common.year ?? ''}}</td></tr>
                 </tbody>
             </table>
             

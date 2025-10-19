@@ -20,7 +20,17 @@
                 Play: false,
                 TrackTime: { current: 0, duration: 0},
                 RepeatMode: "",
-            };
+                TagsData: {
+                    title: "Название",
+                    disc_no: "Диск №",
+                    disc_of: "из",
+                    track_no: "Трек №",
+                    track_of: "из",
+                    genre: "Жанр",
+                    artist: "Исполнитель", 
+                    album: "Альбом"
+                },
+            }
         },
         methods: {
             onFilesSelected(files) {

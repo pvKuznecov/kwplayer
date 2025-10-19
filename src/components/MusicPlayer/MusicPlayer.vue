@@ -14,6 +14,7 @@
                 return this.tracks.map((track) => ({
                     id: track.id || Math.random().toString(36).substr(2, 9),
                     name: track.name,
+                    common: track.common,
                     url: URL.createObjectURL(track) // Создаем URL для воспроизведения
                 }));
             },
