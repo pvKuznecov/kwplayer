@@ -129,7 +129,8 @@
       
                 let TrackTimeElement = document.querySelector('#main_tracktime');
                 TrackTimeElement.value = this.TrackTime.current;
-            },            
+            }
+            
         }
     }
 </script>

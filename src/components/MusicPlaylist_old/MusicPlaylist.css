@@ -145,13 +145,15 @@
 
 .rotating_rect {
     animation: spin 2s linear infinite;
-    transform-origin: center;
-    transition: transform 0.3s ease;
 }
 
 @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @media (max-width: 320px) {
@@ -344,7 +346,7 @@
         margin-right: auto; }
 }
 
-@media (min-width: 1440px) and (max-width: 1919px) {
+@media (min-width: 1440px) {
     .playlist {
         display: flex;
         min-width: 1400px;
@@ -426,6 +428,14 @@
         font-size: small;
     }
     
+
+    
+    
+
+    
+
+    
+
     
     .tagkey {
         text-align: left;
@@ -435,13 +445,4 @@
     .tagval {
         text-align: center;
     };
-}
-
-@media (min-width: 1920px) {
-    .playlist {
-        width: 1600px;
-        height: 1000px;
-    }
-  
-    .playlist_arr { width: 1290px; }
 }
