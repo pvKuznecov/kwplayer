@@ -1,7 +1,6 @@
 <template src="./MusicUploader.html"></template>
 <style src="./MusicUploader.css"></style>
 <script>
-    // import { musicMetadata } from 'music-metadata';
     import { parseBlob } from 'music-metadata';
     
     export default {
@@ -9,14 +8,26 @@
         data() {
             return {
                 PlayList: false,
+                isLoading: false,
+                totalFiles: 0,
+                processedCount: 0
             }
         },
-        // components: {
-        //     musicMetadata
-        // },
         methods: {
             async handleFileSelect(event) {
-                const files = event.target.files;
+                const files = Array.from(event.target.files);
+                const audioFiles = files.filter(file => this.isAudio(file));
+
+                if (audioFiles.length === 0) {
+                    this.showError("Не было выбрано ни одного аудиофайла.");
+                    this.resetInput(event.target);
+                    return;
+                }
+
+                this.isLoading = true;
+                this.totalFiles = audioFiles.length;
+                this.processedCount = 0;
+
                 let validFiles = [];
         
                 // Проходим по каждому файлу и проверяем его тип
@@ -28,18 +39,20 @@
 
                     
                     try {
-                        const blob = file.slice() 
-                        let parsedData = await parseBlob(blob); // 👈 Метод parse остался прежним
+                        const blob = file.slice(0, file.size); 
+                        let parsedData = await parseBlob(blob);                        
                         
-                        // console.log("parsedData", parsedData);
                         file.common = parsedData.common;
-                        
-                        
                     } catch (error) {
                         console.error('Ошибка при разборе файла:', error)
                     }
                     
                     validFiles.push(file); // Добавляем подходящий файл в массив
+                    this.processedCount++;
+
+                    if (this.processedCount == this.totalFiles) {
+                        this.isLoading = false;
+                    }
                 }
 
                 // Если были выбраны правильные файлы, отправляем их вверх
@@ -50,9 +63,21 @@
                     alert("Не было выбрано ни одного аудиофайла.");
                 }
             },
-            // Проверяем MIME-type файла на соответствие типу audio
             isAudio(file) {
-                return new RegExp("^audio/", "i").test(file.type);
+                // Более надежная проверка аудиофайлов
+                const audioTypes = [ 'audio/mpeg', 'audio/wav', 'audio/flac', 'audio/ogg', 'audio/aac', 'audio/x-m4a' ];
+                const extension = file.name.toLowerCase().split('.').pop();
+                const audioExtensions = ['mp3', 'wav', 'flac', 'ogg', 'aac', 'm4a'];
+            
+                return audioTypes.includes(file.type) || audioExtensions.includes(extension);
+            },
+            showError(message) {
+                alert(message);
+                console.error(message);
+            },
+            // Сброс input (открывает возможность повторно загружать те-же файлы)
+            resetInput(inputElement) {
+                inputElement.value = '';
             }
         }
     }

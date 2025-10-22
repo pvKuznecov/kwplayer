@@ -6,76 +6,105 @@
     background-color: rgba(255, 255, 255, 0.411);
     box-shadow: 4px 4px 35px 0px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    padding: 5px;
+    /* padding: 10px; */
     margin-left: auto;
     margin-right: auto; }
 
 .controlpanel {
     display: inline-block;
-    width: 295px;
-    height: 890px;
-    overflow: hidden;
-    padding: 5px; }
+    width: 290px;
+    height: 880px;
+    /* overflow: hidden; */
+    padding-right: 10px; }
 
 .playlist_arr {
     display: inline-block;
     width: 1090px;
     height: 900px;
-    margin-left: 5px;
-    border-radius: 5px;
-    padding: 3px;
-    overflow: hidden; }
+    /* margin-left: 5px; */
+    /* border-radius: 5px; */
+    /* padding: 3px; */
+    /* overflow: hidden; */
+}
 
 /* .controlpanel================================================ */
 .f_cover {
-    display: inline-block;
-    width: 100px;
-    height: 100px;
+    display: block;
+    width: 280px;
+    height: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2px;
     background-color: white;
     border-radius: 5px;
-    box-shadow: -1px -1px 20px 4px rgba(34, 60, 80, 0.28) inset;
-}
+    box-shadow: -1px -1px 20px 4px rgba(34, 60, 80, 0.28) inset; }
+#svg_cover {
+    width: 278px;
+    height: 278px; }
 
 .f_panel {
-    display: inline-block;
-    width: calc(100% - 100px);
-    border-radius: 5px;
-}
-
-.f_trackinfo {
-    display: none;
-    width: 0;
-    height: 0;
-}
-
-/* .playlist_arr================================================ */
-
-
-
-
-
-
-
+    display: block;
+    width: 300px;
+    height: 200px;
+    border-radius: 5px; }
+.track_name {
+    display: block;
+    width: 100%;
+    height: 50px;
+    text-align: center; }
+.track_time {
+    display: block;
+    width: 100%;
+    height: 10px;
+    margin-top: 10px;
+    font-size: small;
+    color: white; }
+.track_timeline {
+    display: block;
+    width: 100%;
+    height: 20px; }
 .track_buttons {
     display: block;
     width: 100%;
     height: 40px; }
+.track_volume_elem {
+    display: block;
+    width: 100%;
+    height: 40px;
+    float: right;
+    padding-right: 10px;
+    color: white;
+    font-size: small;
+    font-weight: 700; }
+
+.f_trackinfo {
+    display: none;
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: -1px -1px 33px 4px rgba(34, 60, 80, 0.28) inset; }
+.f_trackinfo table {
+    width: 100%;
+    max-height: 100%;
+    font-size: small; }
+
+/* .other================================================ */
+
+.tagval { text-align: center; };
+.tagkey {
+    text-align: left;
+    padding-left: 3px;
+}
 
 .playlist_name {
     display: inline-block;
-    height: 25px;
-    padding: 3px 0 3px 5px;
+    height: 24px;
     color: white;
-    float: left; }
+    float: left;
+    margin-bottom: 10px; }
 
-
-
-.controlpanel table {
-    width: 100%;
-}
-
-
-
+.controlpanel table { width: 100%; }
 
 .track_buttons_elem {
     display: inline-block;
@@ -84,7 +113,6 @@
     margin-left: 5px;
     margin-right: 5px;
     border-radius: 5px;
-    /* border: 1px solid white; */
     color: white;
     background-color: rgba(255, 255, 255, 0);
     &:hover {
@@ -93,355 +121,212 @@
     }
 }
 
-.track_buttons_elem svg:active {
-    color: rgb(238, 238, 238);
-}
-
-.track_volume_elem {
-    display: inline-block;
-    height: 40px;
-    /* border: 1px solid white; */
-    float: right;
-    padding-right: 10px;
-    color: white;
-    font-size: small;
-    font-weight: 700;
-}
-
-.track_name {
-    display: block;
-    width: 100%;
-    height: 50px;
-    text-align: center; }
-
-.track_time {
-    display: block;
-    width: 100%;
-    height: 10px;
-    margin-top: 10px;
-    font-size: small;
-    color: white;
-}
-
-.track_timeline {
-    display: block;
-    width: 100%;
-    height: 20px; }
+.track_buttons_elem svg:active { color: rgb(238, 238, 238); }
 
 .track_rangetime {
     width: 95%;
     margin-left: auto;
-    margin-right: auto;
-}
+    margin-right: auto; }
 
 .track_buttons {
     display: block;
     width: 100%;
-    height: 50px;
-    /* background-color: tomato; */
-}
-
-
+    height: 50px; }
 
 .rotating_rect {
     animation: spin 2s linear infinite;
     transform-origin: center;
-    transition: transform 0.3s ease;
-}
+    transition: transform 0.3s ease; }
 
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 480px) {
     .playlist {
-        width: 310px;
-        margin-left: auto;
-        margin-right: auto; }
-
-    .playlist_name {
-        width: 310px;
-        margin-left: auto;
-        margin-right: auto; }
-
-    .f_cover {
         display: block;
-        width: 310px;
-        height: 310px;
+        width: 315px;
+        height: 98vh; }
+    .controlpanel {
+        display: block;
+        width: 295px;
+        height: 200px;
+        padding: 10px; }
+    .playlist_arr {
+        display: block;
+        width: 295px;
+        height: calc(98vh - 230px);
+        padding: 0;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: .5rem; }
+        font-size: small; }
+    
+    .f_cover, .playlist_name { display: none; }
 
-    .f_panel {
+    .custom-file-upload {
         display: block;
-        width: 310px; }
-
-    .controlpanel { min-height: 400px; }
-
-    .track_volume_elem {
-        display: block;
-        width: 310px;
-        margin-left: auto;
-        margin-right: auto; }
-
-    #svg_cover {
-        width: 300px;
-        height: 300px; }
-
-}
-
-@media (min-width: 321px) and (max-width: 480px) {
-    .playlist {
-        width: 320px;
-        margin-left: auto;
-        margin-right: auto; }
-
-    .playlist_name {
-        width: 320px;
-        margin-left: auto;
-        margin-right: auto; }
-
-    .f_cover {
-        display: block;
-        width: 310px;
-        height: 310px;
+        float: none;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: .5rem; }
-
-    .f_panel {
-        display: block;
-        width: 320px; }
-
-    .controlpanel { min-height: 400px; }
-
-    .track_volume_elem {
-        display: block;
-        width: 320px;
-        margin-left: auto;
-        margin-right: auto; }
-
-    #svg_cover {
-        width: 300px;
-        height: 300px; }
+    }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
     .playlist {
-        width: 475px;
-        min-height: 90vh;
-        margin-left: auto;
-        margin-right: auto; }
-
-    .playlist_name {
-        width: 475px;
-        margin-left: auto;
-        margin-right: auto; }
-
-    .f_cover {
         display: block;
-        width: 450px;
-        height: 450px;
+        width: 475px;
+        height: 98vh; }
+    .controlpanel {
+        display: block;
+        width: 455px;
+        height: 220px;
+        padding: 10px 10px 0 10px; }
+    .playlist_arr {
+        display: block;
+        width: 465px;
+        height: calc(98vh - 240px);
+        padding: 0;
+        margin-left: auto;
+        margin-right: auto; }
+    
+    .f_cover { display: none; }
+    .f_panel {
+        width: 455px;
+        height: 190px;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: .5rem; }
+    }
+    .f_trackinfo { display: none; }
 
-    .f_panel {
-        display: block;
-        width: 475px; }
-
-    .controlpanel { min-height: 420px; }
-
-    .track_volume_elem {
-        display: block;
-        width: 475px;
-        margin-left: auto;
-        margin-right: auto; }
-
-    #svg_cover {
-        width: 442px;
-        height: 442px; }
+    .playlist_name { padding-left: 3px;}
 }
 
 @media (min-width: 769px) and (max-width: 992px) {
     .playlist {
         width: 760px;
-        min-height: 90vh;
-        margin-left: auto;
-        margin-right: auto; }
+        height: 400px; }
+    .controlpanel {
+        width: 300px;
+        height: 580px;
+        padding: 10px; }
+    .playlist_arr {
+        width: 640px;
+        height: 580px;
+        padding: 10px 10px 10px 0; }
 
-    .playlist_name {
-        width: 600px;
-        margin-left: auto;
-        margin-right: auto; }
+    .f_cover {
+        width: 300px;
+        height: 180px; }
+    #svg_cover {
+        width: 178px;
+        height: 178px; }
+    
+    .f_panel {
+        display: block;
+        width: 300px;
+        height: 220px;
+    }
 
-    .f_panel { width: calc(100% - 110px); }
-
-    .controlpanel { min-height: 100px; }
-
-    .track_buttons {
-        display: inline-block;
-        width: calc(100% - 210px); }
-
-    .track_volume_elem {
-        width: 200px;
-        margin-left: auto;
-        margin-right: auto; }
+    .f_trackinfo { display: none;}
 }
 
 @media (min-width: 993px) and (max-width: 1200px) {
     .playlist {
-        width: 980px;
-        min-height: 90vh;
-        margin-left: auto;
-        margin-right: auto; }
-
-    .playlist_name {
-        display: block;
-        margin-left: auto;
-        margin-right: auto; }
-
-    .f_panel { width: calc(100% - 110px); }
-
-    .controlpanel { min-height: 100px; }
-
-    .track_buttons {
-        display: inline-block;
-        width: calc(100% - 250px); }
-
-    .track_volume_elem {
-        display: inline-block;
-        width: 180px;
-        margin-left: auto;
-        margin-right: auto; }
-}
-
-@media (min-width: 1201px) and (max-width: 1439px) {
-    .playlist {
-        width: 1190px;
-        /* min-height: 900px; */
-        margin-left: auto;
-        margin-right: auto; }
-
-    .playlist_name {
-        display: block;
-        margin-left: auto;
-        margin-right: auto; }
-
-    .f_panel { width: calc(100% - 110px); }
-
-    .controlpanel { min-height: 100px; }
-
-    .track_buttons {
-        display: inline-block;
-        width: calc(100% - 250px); }
-
-    .track_volume_elem {
-        display: inline-block;
-        width: 180px;
-        margin-left: auto;
-        margin-right: auto; }
-}
-
-@media (min-width: 1440px) and (max-width: 1919px) {
-    .playlist {
-        display: flex;
-        min-width: 1400px;
-        max-width: 1400px;
-        height: 900px;
-        overflow: hidden;
-        max-height: 95vh;
-        padding: 5px;
-        margin-left: auto;
-        margin-right: auto; }
-
-    /* .controlpanel {
-        display: inline-block;
-        width: 295px;
-        height: 890px;
-        overflow: hidden; } */
-
-    /* .playlist_arr {
-        display: inline-block;
-        width: 1090px;
-        height: 890px;
-        margin-left: 5px; } */
-
-    .f_cover {
-        display: block;
-        width: 248px;
-        height: 248px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 2px; }
-
-    .f_panel {
-        display: block;
+        width: 970px;
+        height: 600px; }
+    .controlpanel {
         width: 300px;
-        height: 160px; }
+        height: 580px;
+        padding: 10px; }
+    .playlist_arr {
+        width: 640px;
+        height: 580px;
+        padding: 10px 10px 10px 0; }
 
     .f_trackinfo {
         display: block;
         width: 300px;
-        height: 470px;
+        height: 230px;
         background-color: white;
         border-radius: 5px;
+        overflow: hidden;
+        overflow-y: auto;
         box-shadow: -1px -1px 33px 4px rgba(34, 60, 80, 0.28) inset; }
-
-
+        
+    .f_cover {
+        width: 280px;
+        height: 150px; }
     #svg_cover {
-        width: 245px;
-        height: 245px; }
+        width: 148px;
+        height: 148px; }
+    
+}
 
-/* 170 */
-    /* .track_name { height: 50px; } */
-    /* .track_time {height: 20px;} */
-    /* .track_timeline { height: 20px; } */    
-    /* .track_buttons {
+@media (min-width: 1201px) and (max-width: 1439px) {
+    .playlist {
+        width: 1180px;
+        height: 800px; }
+    .controlpanel {
+        width: 300px;
+        height: 780px;
+        padding: 10px; }
+    .playlist_arr {
+        width: 850px;
+        height: 780px;
+        padding: 10px 10px 10px 0; }
+
+    .f_trackinfo {
         display: block;
-        width: 100%;
-        height: 40px; } */
-    
-    .track_volume_elem {
+        width: 300px;
+        height: 300px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: -1px -1px 33px 4px rgba(34, 60, 80, 0.28) inset; }   
+}
+
+@media (min-width: 1440px) and (max-width: 1919px) {
+    .playlist {
+        width: 1400px;
+        height: 800px; }
+    .controlpanel {
+        width: 300px;
+        height: 780px;
+        padding: 10px;
+     }  
+    .playlist_arr {
+        width: 1070px;
+        height: 780px;
+        padding: 10px 10px 10px 0; }
+
+    .f_trackinfo {
         display: block;
-        width: 100%;
-        height: 27px;
-        margin-bottom: 3px; }
-
-    
-
-
-
-    .playlist_name {
-        display: inline-block;
-        float: left; }
-
-    
-    
-    .f_trackinfo table {
-        width: 100%;
-        /* height: 380px; */
-        height: 52vh;
-        font-size: small;
-    }
-    
-    
-    .tagkey {
-        text-align: left;
-        padding-left: 3px;
-    }
-
-    .tagval {
-        text-align: center;
-    };
+        width: 300px;
+        height: 300px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: -1px -1px 33px 4px rgba(34, 60, 80, 0.28) inset; }   
 }
 
 @media (min-width: 1920px) {
     .playlist {
         width: 1600px;
-        height: 1000px;
-    }
-  
-    .playlist_arr { width: 1290px; }
+        height: 1000px; }
+    .controlpanel {
+        width: 300px;
+        height: 980px;
+        padding: 10px;
+     }  
+    .playlist_arr {
+        width: 1270px;
+        height: 980px;
+        padding: 10px 10px 10px 0; }
+
+    .f_trackinfo {
+        display: block;
+        width: 300px;
+        height: 500px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: -1px -1px 33px 4px rgba(34, 60, 80, 0.28) inset; }
 }

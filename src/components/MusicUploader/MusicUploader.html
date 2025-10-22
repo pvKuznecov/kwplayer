@@ -1,4 +1,10 @@
-<label for="file-input" style="font-size: small;" class="custom-file-upload">
-    Указать папку + 
-    <input id="file-input" type="file" webkitdirectory directory multiple @change="handleFileSelect"/>
+<label for="file-input" class="custom-file-upload">
+    <template v-if="isLoading">⏳ Обработка... {{ processedCount }}/{{ totalFiles }}</template>
+    <template v-else>📁 Указать папку +</template>
+    <input id="file-input" type="file" webkitdirectory directory multiple @change="handleFileSelect" :disabled="isLoading" />
 </label>
+<div v-if="isLoading" class="progress-info">
+    <div class="progress-bar">
+        <div class="progress-fill" :style="{ width: `${(processedCount / totalFiles) * 100}%` }"></div>
+    </div>
+</div>

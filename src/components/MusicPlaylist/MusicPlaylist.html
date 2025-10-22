@@ -1,7 +1,7 @@
 <div class="playlist">
     <div class="controlpanel">
         <div class="f_cover">
-            <svg xmlns="http://www.w3.org/2000/svg" id="svg_cover" width="99" height="99" fill="currentColor" class="bi bi-disc-fill" :class="(Play) ? 'rotating_rect' : ''" viewBox="0 0 16 16">
+            <svg id="svg_cover" xmlns="http://www.w3.org/2000/svg" width="99" height="99" fill="currentColor" class="bi bi-disc-fill" :class="(Play) ? 'rotating_rect' : ''" viewBox="0 0 16 16">
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-6 0a2 2 0 1 0-4 0 2 2 0 0 0 4 0zM4 8a4 4 0 0 1 4-4 .5.5 0 0 0 0-1 5 5 0 0 0-5 5 .5.5 0 0 0 1 0zm9 0a.5.5 0 1 0-1 0 4 4 0 0 1-4 4 .5.5 0 0 0 0 1 5 5 0 0 0 5-5z"/>
             </svg>
         </div>
@@ -13,7 +13,6 @@
             <div class="track_timeline">
                 <audio id="main_audio" controls :src="TargetTrack.url" style="display: none;" :volume="VolumeLvl" @timeupdate="onTimeUpdate"  />
                 <input id="main_tracktime" class="track_rangetime" type="range" min="0" value="0" @change="Chng_TrackRangeTime()" />
-                <!-- <input id="main_tracktime" class="track_rangetime" type="range" min="0" :value="TrackTime.current" @change="Chng_TrackRangeTime()" /> -->
             </div>
             <div class="track_buttons">
                 <div class="track_buttons_elem">
@@ -88,8 +87,7 @@
             </table>
             
         </div>
-    </div>
-    
+    </div>    
     <div class="playlist_arr">
         <div class="playlist_name">
             <div v-if="EditPlaylistMode"><input type="text" name="playlist_name" id="playlist_name"></div>

@@ -1,11 +1,11 @@
 .music_player {
     display: block;
     width: 99%;
-    height: 87vh;
+    height: calc(100% - 34px);
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px;
-    padding: 3px;
+    padding: 1px;
     background-color: white;
     box-shadow: -1px -1px 33px 4px rgba(34, 60, 80, 0.28) inset;
     margin-bottom: 5px;

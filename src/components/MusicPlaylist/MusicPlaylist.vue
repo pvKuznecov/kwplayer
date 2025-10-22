@@ -34,7 +34,8 @@
         },
         methods: {
             onFilesSelected(files) {
-                this.FindTracks = files.filter(file => file.type === 'audio/mpeg');
+                this.FindTracks = files;
+                // this.FindTracks = files.filter(file => file.type === 'audio/mpeg');
                 console.log("FindTracks", this.FindTracks);
             },
             onSelectedTrack(trackData) {
