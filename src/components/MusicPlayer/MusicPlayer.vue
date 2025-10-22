@@ -6,7 +6,7 @@ export default {
     data() {
         return {
             currentTrack: null,
-            audioDurations: {} // Простой объект для длительностей
+            audioDurations: {} // Объект для "длительностей"
         }
     },
     props: {
@@ -25,7 +25,7 @@ export default {
                 }
                 
                 const trackId = this.getStableTrackId(track, index);
-                const trackKey = this.getTrackKey(track);
+                const trackKey = `${track.name}-${track.size}`;
                 let finalObj = {
                     id: trackId,
                     name: track.name || 'Unknown',
@@ -44,11 +44,9 @@ export default {
     watch: {
         tracks: {
             handler(newTracks) {
-                if (newTracks && newTracks.length > 0) {
-                    this.preloadDurationsSimple(newTracks);
-                }
+                if (newTracks && newTracks.length > 0) this.preloadDurationsSimple(newTracks);
             },
-            immediate: true //делать сразу, при создании наблюдателя (без него - будет ждуть послед. изменения)
+            immediate: true //делать сразу, при создании наблюдателя (без него - будет ждать послед. изменения)
         }
     },
     methods: {
@@ -58,21 +56,13 @@ export default {
             // Простая генерация ID
             return `track-${index}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
         },
-
-        getTrackKey(track) {
-            return `${track.name}-${track.size}`;
-        },
-
         async preloadDurationsSimple(tracks) {
             for (const track of tracks) {
-                const trackKey = this.getTrackKey(track);
+                const trackKey = `${track.name}-${track.size}`;
                 
-                // Если длительность еще не загружена
                 if (!this.audioDurations[trackKey]) {
                     try {
-                        const duration = await this.getAudioDurationSimple(track);
-                        // Простое присваивание - Vue 3 реактивно обновит это
-                        this.audioDurations[trackKey] = duration;
+                        this.audioDurations[trackKey] = await this.getAudioDurationSimple(track);
                     } catch (error) {
                         console.warn(`Не удалось получить длительность для ${track.name}:`, error);
                         this.audioDurations[trackKey] = 0;
@@ -80,7 +70,7 @@ export default {
                 }
             }
         },
-
+        // вычисление длительности файла
         getAudioDurationSimple(track) {
             return new Promise((resolve, reject) => {
                 const audio = new Audio();
@@ -88,41 +78,40 @@ export default {
                 
                 audio.src = objectURL;
                 
-                const cleanup = () => {
+                const mkClean = () => {
                     audio.removeEventListener('loadedmetadata', onLoaded);
                     audio.removeEventListener('error', onError);
-                    URL.revokeObjectURL(objectURL); // Освобождаем URL сразу
+                    URL.revokeObjectURL(objectURL); // Освобождаем ссылку в памяти "URL" - сразу
                 };
                 
+                // чистим ссылки, достаем длительность
                 const onLoaded = () => {
-                    cleanup();
+                    mkClean();
                     resolve(audio.duration);
                 };
-                
+                // чистим ссылки, возвращаем ошибку
                 const onError = (e) => {
-                    cleanup();
+                    mkClean();
                     reject(e);
                 };
                 
-                audio.addEventListener('loadedmetadata', onLoaded);
-                audio.addEventListener('error', onError);
+                audio.addEventListener('loadedmetadata', onLoaded); //подписка на событие "загрузка мета-данных"
+                audio.addEventListener('error', onError); //подписка на событие "ошибка"
                 
                 // Таймаут
                 setTimeout(() => {
-                    cleanup();
+                    mkClean();
                     reject(new Error('Timeout loading audio metadata'));
                 }, 3000);
             });
         },
-
         formatDuration(seconds) {
-            if (!seconds || isNaN(seconds)) return '00:00';
-            
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            if (!seconds || isNaN(seconds)) {
+                return '00:00';
+            } else {
+                return `${Math.floor(seconds / 60).toString().padStart(2, '0')}:${Math.floor(seconds % 60).toString().padStart(2, '0')}`;
+            }
         },
-
         SelectedTrack(track) {
             if (!this.currentTrack || this.currentTrack.id !== track.id) {
                 this.currentTrack = track;
