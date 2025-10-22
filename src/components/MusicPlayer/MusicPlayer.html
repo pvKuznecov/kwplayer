@@ -1,22 +1,26 @@
 <div class="music_player">
     <table v-if="preparedTracks && preparedTracks.length > 0">
-        <tbody>
-            <tr style="position: sticky; top: 0; background-color: rgb(243, 243, 243); height: 20px !important;">
+        <thead>
+            <tr class="table-header">
                 <th>№</th>
                 <th>Исполнитель</th>
                 <th>Альбом</th>
-                <th>Жанр:</th>
-                <th>Название:</th>	
-                <th>Время:</th>
+                <th>Название</th>	
+                <th>Время</th>
             </tr>
-            <tr v-for="(track, index) in preparedTracks" :key="track.id" :class="{ active: track.id == this.currentTrack.id }" @click="SelectedTrack(track)">
-                <td>{{index + 1}}</td>
-                <td>{{track.common.artist}}</td>
-                <td>{{track.common.album}}</td>
-                <td><ul><li v-for="gVal in track.common.genre">{{gVal}}</li></ul></td>
-                <td style="text-align: right;">{{track.name}}</td>
-                <td>00:00</td>
+        </thead>
+        <tbody>
+            <tr v-for="(track, index) in preparedTracks" :key="track.id" :class="{ active: currentTrack && track.id === currentTrack.id }" @click="SelectedTrack(track)" class="track-row">
+                <td class="track-number">{{ index + 1 }}</td>
+                <td class="track-artist">{{ track.common?.artist || 'Неизвестен' }}</td>
+                <td class="track-album">{{ track.common?.album || 'Без альбома' }}</td>
+                <td class="track-title" :title="track.name">{{ track.name }}</td>
+                <td class="track-duration">{{ track.duration ? formatDuration(track.duration) : '--:--' }}</td>
             </tr>
         </tbody>
-    </table>
+    </table>    
+    <div v-else class="empty-state">
+        <p>🎵 Нет треков для отображения</p>
+        <p class="empty-hint">Загрузите музыку через форму выше</p>
+    </div>
 </div>
