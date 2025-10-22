@@ -163,13 +163,6 @@
         font-size: small; }
     
     .f_cover, .playlist_name { display: none; }
-
-    .custom-file-upload {
-        display: block;
-        float: none;
-        margin-left: auto;
-        margin-right: auto;
-    }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {

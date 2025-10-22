@@ -2,11 +2,7 @@
     display: inline-block;
     width: 200px;
     height: 20px;
-    /* margin-left: auto;
-    margin-right: auto; */
     float: right;
-    /* margin-top: 10px;
-    margin-right: 10px; */
     margin-bottom: 10px;
     color: white;
     border-radius: 5px;
@@ -49,4 +45,13 @@
     background-color: #021b03;
     transition: width 0.3s ease;
     border-radius: 2px;
+}
+
+@media (max-width: 480px) {
+    .custom-file-upload {
+        display: block;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }

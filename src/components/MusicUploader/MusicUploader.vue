@@ -10,7 +10,8 @@
                 PlayList: false,
                 isLoading: false,
                 totalFiles: 0,
-                processedCount: 0
+                processedCount: 0,
+                MAX_FILE_SIZE: 100 * 1024 * 1024, // 100MB
             }
         },
         methods: {
@@ -64,6 +65,11 @@
                 }
             },
             isAudio(file) {
+                if (file.size > this.MAX_FILE_SIZE) {
+                    console.warn(`Файл ${file.name} слишком большой: ${file.size} bytes`);
+                    return false;
+                }
+
                 // Более надежная проверка аудиофайлов
                 const audioTypes = [ 'audio/mpeg', 'audio/wav', 'audio/flac', 'audio/ogg', 'audio/aac', 'audio/x-m4a' ];
                 const extension = file.name.toLowerCase().split('.').pop();
