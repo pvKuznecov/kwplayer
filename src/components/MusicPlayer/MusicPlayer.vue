@@ -6,11 +6,20 @@ export default {
     data() {
         return {
             currentTrack: null,
-            audioDurations: {} // Объект для "длительностей"
+            audioDurations: {}, // Объект для "длительностей"
+            tableShow: false,
+            tableShowConfig: {
+                id: true,
+                artist: true,
+                album: true,
+                title: true,
+                duration: true
+            },
         }
     },
     props: {
-        tracks: { type: Array, default: () => [] }
+        tracks: { type: Array, default: () => [] },
+        tableshow: { type: Boolean, default: () => false}
     },
     computed: {
         preparedTracks() {
@@ -45,6 +54,12 @@ export default {
         tracks: {
             handler(newTracks) {
                 if (newTracks && newTracks.length > 0) this.preloadDurationsSimple(newTracks);
+            },
+            immediate: true //делать сразу, при создании наблюдателя (без него - будет ждать послед. изменения)
+        },
+        tableshow: {
+            handler(newVal) {
+                this.tableShow = newVal;
             },
             immediate: true //делать сразу, при создании наблюдателя (без него - будет ждать послед. изменения)
         }

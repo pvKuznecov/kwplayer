@@ -20,6 +20,7 @@
                 Play: false,
                 TrackTime: { current: 0, duration: 0},
                 RepeatMode: "",
+                tableShow: false,
                 TagsData: {
                     title: "Название",
                     disc_no: "Диск №",
@@ -130,7 +131,10 @@
       
                 let TrackTimeElement = document.querySelector('#main_tracktime');
                 TrackTimeElement.value = this.TrackTime.current;
-            },            
+            },
+            Chng_tableShow() {
+                this.tableShow = !this.tableShow;
+            }
         }
     }
 </script>

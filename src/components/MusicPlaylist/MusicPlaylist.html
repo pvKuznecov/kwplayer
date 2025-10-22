@@ -94,6 +94,7 @@
             <div v-else>[ {{Playlist.name}} ]</div>
         </div>
         <MusicUploader @files-selected="onFilesSelected" />
-        <MusicPlayer :tracks="FindTracks" @selected-track="onSelectedTrack" />
+        <span class="playlist_tabConfig" title="Настройки отображения" @click="Chng_tableShow()">⚙️</span>
+        <MusicPlayer :tracks="FindTracks" @selected-track="onSelectedTrack" :tableshow="tableShow"/>
     </div>    
 </div>

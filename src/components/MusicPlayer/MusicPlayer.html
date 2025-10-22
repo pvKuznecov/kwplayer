@@ -1,26 +1,42 @@
+<div v-if="tableShow" class="tableShow_config">
+    <div class="tableShow_form">
+        <div class="tableShow_header">
+            <span class="header_txt">Настройка отображения плейлиста</span>
+            <span class="header_button" @click="tableShow = false">X</span>
+        </div>
+        <div class="tableShow_content">
+            <div class="tableShow_content_elem">№: <input type="checkbox" name="ID" id="aaa_ID"></div>
+            <div class="tableShow_content_elem">Исполнитель: <input type="checkbox" name="ID" id="aaa_ID"></div>
+            <div class="tableShow_content_elem">Альбом: <input type="checkbox" name="ID" id="aaa_ID"></div>
+            <div class="tableShow_content_elem">Название: <input type="checkbox" name="ID" id="aaa_ID"></div>
+            <div class="tableShow_content_elem">Время: <input type="checkbox" name="ID" id="aaa_ID"></div>
+        </div>
+        
+    </div>        
+</div>
 <div class="music_player">
     <table v-if="preparedTracks && preparedTracks.length > 0">
         <thead>
             <tr class="table-header">
-                <th>№</th>
-                <th>Исполнитель</th>
-                <th>Альбом</th>
-                <th>Название</th>	
-                <th>Время</th>
+                <th v-if="tableShowConfig.id">№</th>
+                <th v-if="tableShowConfig.artist">Исполнитель</th>
+                <th v-if="tableShowConfig.album">Альбом</th>
+                <th v-if="tableShowConfig.title">Название</th>
+                <th v-if="tableShowConfig.duration">Время</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="(track, index) in preparedTracks" :key="track.id" :class="{ active: currentTrack && track.id === currentTrack.id }" @click="SelectedTrack(track)" class="track-row">
-                <td class="track-number">{{ index + 1 }}</td>
-                <td class="track-artist">{{ track.common?.artist || 'Неизвестен' }}</td>
-                <td class="track-album">{{ track.common?.album || 'Без альбома' }}</td>
-                <td class="track-title" :title="track.name">{{ track.name }}</td>
-                <td class="track-duration">{{ track.duration ? formatDuration(track.duration) : '--:--' }}</td>
+                <td v-if="tableShowConfig.id" class="track-number">{{ index + 1 }}</td>
+                <td v-if="tableShowConfig.artist" class="track-artist">{{ track.common?.artist || 'Неизвестен' }}</td>
+                <td v-if="tableShowConfig.album" class="track-album">{{ track.common?.album || 'Без альбома' }}</td>
+                <td v-if="tableShowConfig.title" class="track-title" :title="track.name">{{ track.name }}</td>
+                <td v-if="tableShowConfig.duration" class="track-duration">{{ track.duration ? formatDuration(track.duration) : '--:--' }}</td>
             </tr>
         </tbody>
     </table>    
     <div v-else class="empty-state">
         <p>🎵 Нет треков для отображения</p>
         <p class="empty-hint">Загрузите музыку через форму выше</p>
-    </div>
+    </div>    
 </div>
