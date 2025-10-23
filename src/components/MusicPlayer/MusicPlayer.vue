@@ -14,7 +14,8 @@ export default {
                 artist: true,
                 album: true,
                 title: true,
-                duration: true
+                duration: true,
+                genre: true
             },
             urlsData: new Map(),
         }

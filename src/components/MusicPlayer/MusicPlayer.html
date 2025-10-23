@@ -5,6 +5,7 @@
                 <th v-if="tableShowConfig.id">№</th>
                 <th v-if="tableShowConfig.artist">Исполнитель</th>
                 <th v-if="tableShowConfig.album">Альбом</th>
+                <th v-if="tableShowConfig.genre">Жанр</th>
                 <th v-if="tableShowConfig.title">Название</th>
                 <th v-if="tableShowConfig.duration">Время</th>
             </tr>
@@ -14,6 +15,9 @@
                 <td v-if="tableShowConfig.id" class="track-number">{{ index + 1 }}</td>
                 <td v-if="tableShowConfig.artist" class="track-artist">{{ track.common?.artist || 'Неизвестен' }}</td>
                 <td v-if="tableShowConfig.album" class="track-album">{{ track.common?.album || 'Без альбома' }}</td>
+                <td v-if="tableShowConfig.genre" class="track-genre">
+                    <div v-for="gVal in (track.common?.genre || [])">{{gVal}}</div>
+                </td>
                 <td v-if="tableShowConfig.title" class="track-title" :title="track.name">{{ track.name }}</td>
                 <td v-if="tableShowConfig.duration" class="track-duration">{{ track.duration ? formatDuration(track.duration) : '--:--' }}</td>
             </tr>

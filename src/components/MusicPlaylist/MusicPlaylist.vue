@@ -26,7 +26,8 @@
                     artist: true,
                     album: true,
                     title: true,
-                    duration: true
+                    duration: true,
+                    genre: true
                 },
                 TagsData: {
                     title: "Название",

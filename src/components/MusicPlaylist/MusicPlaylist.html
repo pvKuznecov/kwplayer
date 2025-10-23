@@ -9,6 +9,7 @@
             <div class="tableShow_content_elem">Исполнитель: <input type="checkbox" name="tabTag_artist" id="tabTag_artist" :checked="showTagsData.artist"></div>
             <div class="tableShow_content_elem">Альбом: <input type="checkbox" name="tabTag_album" id="tabTag_album" :checked="showTagsData.album"></div>
             <div class="tableShow_content_elem">Название: <input type="checkbox" name="tabTag_title" id="tabTag_title" :checked="showTagsData.title"></div>
+            <div class="tableShow_content_elem">Жанр: <input type="checkbox" name="tabTag_genre" id="tabTag_genre" :checked="showTagsData.genre"></div>
             <div class="tableShow_content_elem">Время: <input type="checkbox" name="tabTag_duration" id="tabTag_duration" :checked="showTagsData.duration"></div>
             <div class="tableShow_butpannel">
                 <span class="button_suc" @click="Upd_tableShow()">Сохранить</span>
@@ -94,9 +95,24 @@
                 <tbody>
                     <tr><td class="tagkey">{{TagsData.album}}:</td><td class="tagval">{{TargetTrack.common.album ?? ''}}</td></tr>
                     <tr><td class="tagkey">albumartist:</td><td class="tagval">{{TargetTrack.common.albumartist ?? ''}}</td></tr>
-                    <tr><td class="tagkey">{{TagsData.artist}}:</td><td class="tagval">{{TargetTrack.common.artists ?? TargetTrack.common.artist ?? ''}}</td></tr>
+                    <tr>
+                        <td class="tagkey">{{TagsData.artist}}:</td>
+                        <td v-if="TargetTrack.common?.artists" class="tagval">
+                            <!-- {{TargetTrack.common.artists ?? TargetTrack.common.artist ?? ''}} -->
+                            <div v-for="artVal in (TargetTrack.common?.artists || [])">{{artVal}}</div>
+                        </td>
+                        <td v-else-if="TargetTrack.common?.artist" class="tagval">
+                            {{TargetTrack.common.artist}}
+                        </td>
+                        <td v-else class="tagval"></td>
+                    </tr>
                     <tr><td class="tagkey">Диск:</td><td class="tagval">{{(TargetTrack.common.disk && TargetTrack.common.disk.no && TargetTrack.common.disk.of) ? (TargetTrack.common.disk.no + ' ' + TargetTrack.common.disk.of) : ''}}</td></tr>
-                    <tr><td class="tagkey">{{TagsData.genre}}:</td><td class="tagval"><ul><li v-for="genreVal in TargetTrack.common.genre || []">{{genreVal}}</li></ul></td></tr>
+                    <tr>
+                        <td class="tagkey">{{TagsData.genre}}:</td>
+                        <td class="tagval">
+                            <div v-for="gVal in (TargetTrack.common?.genre || [])">{{gVal}}</div>
+                        </td>
+                    </tr>
                     <tr><td class="tagkey">{{TagsData.title}}:</td><td class="tagval">{{TargetTrack.common.title ?? ''}}</td></tr>
                     <tr><td class="tagkey">{{TagsData.track_no}}:</td><td class="tagval">{{(TargetTrack.common.track && TargetTrack.common.track.no && TargetTrack.common.track.of) ? (TargetTrack.common.track.no + ' ' + TagsData.track_of + ' ' + TargetTrack.common.track.of) : ''}}</td></tr>
                     <tr><td class="tagkey">{{TagsData.year}}:</td><td class="tagval">{{TargetTrack.common.year ?? ''}}</td></tr>
