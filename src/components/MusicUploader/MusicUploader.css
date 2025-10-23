@@ -49,7 +49,7 @@
 
 @media (max-width: 480px) {
     .custom-file-upload {
-        display: block;
+        /* display: block; */
         float: none;
         margin-left: auto;
         margin-right: auto;

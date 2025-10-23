@@ -1,13 +1,14 @@
 <template src="./MusicPlayer.html"></template>
 <style src="./MusicPlayer.css"></style>
 <script>
+// import { handleError } from 'vue';
+
 export default {
     name: 'MusicPlayer',
     data() {
         return {
             currentTrack: null,
             audioDurations: {}, // Объект для "длительностей"
-            tableShow: false,
             tableShowConfig: {
                 id: true,
                 artist: true,
@@ -15,19 +16,20 @@ export default {
                 title: true,
                 duration: true
             },
+            urlsData: new Map(),
         }
     },
     props: {
         tracks: { type: Array, default: () => [] },
-        tableshow: { type: Boolean, default: () => false}
+        tableshow: { type: Object, default: () => ({}) },
     },
     computed: {
         preparedTracks() {
             if (!this.tracks || !Array.isArray(this.tracks)) {
                 return [];
             }
-            
-            let resArr = this.tracks.map((track, index) => {
+
+            return this.tracks.map((track, index) => {
                 if (!track || typeof track !== 'object') {
                     console.warn('Invalid track object::', index);
                     return null;
@@ -40,14 +42,12 @@ export default {
                     name: track.name || 'Unknown',
                     common: track.common || {},
                     duration: this.audioDurations[trackKey] || null,
-                    url: URL.createObjectURL(track),
+                    url: this.getObjectURL(track),
                     key: trackKey
                 };
 
                 return finalObj;
             }).filter(track => track !== null);
-
-            return resArr;
         },
     },
     watch: {
@@ -58,10 +58,12 @@ export default {
             immediate: true //делать сразу, при создании наблюдателя (без него - будет ждать послед. изменения)
         },
         tableshow: {
-            handler(newVal) {
-                this.tableShow = newVal;
+            handler(newObj) {
+                if (newObj && newObj !== null && typeof newObj === 'object' && newObj !== this.tableShowConfig) {
+                    this.tableShowConfig = newObj;
+                }
             },
-            immediate: true //делать сразу, при создании наблюдателя (без него - будет ждать послед. изменения)
+            immediate: true
         }
     },
     methods: {
@@ -132,7 +134,20 @@ export default {
                 this.currentTrack = track;
                 this.$emit("selected-track", track);
             }
+        },
+        getObjectURL(track) {
+            const key = `${track.name}-${track.size}`;
+            if (!this.urlsData.has(key)) {
+                this.urlsData.set(key, URL.createObjectURL(track));
+            }
+            return this.urlsData.get(key);
+        },
+    },
+    beforeUnmount() {
+        for (const url of this.urlsData.values()) {
+            URL.revokeObjectURL(url);
         }
+        this.urlsData.clear();
     }
 };
 </script>

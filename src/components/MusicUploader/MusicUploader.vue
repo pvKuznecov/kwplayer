@@ -2,6 +2,10 @@
 <style src="./MusicUploader.css"></style>
 <script>
     import { parseBlob } from 'music-metadata';
+
+    // const screenWidth = window.screen.width;
+    // const screenHeight = window.screen.height;
+    // console.log(`Разрешение экрана: ${screenWidth}x${screenHeight}`);
     
     export default {
         name: 'MusicUploader',
@@ -30,33 +34,22 @@
                 this.processedCount = 0;
 
                 let validFiles = [];
-        
-                // Проходим по каждому файлу и проверяем его тип
-                for (let file of files) {
-                    if (!this.isAudio(file)) {
-                        console.log(`Файл ${file.name} не является аудиофайлом.`);
-                        continue; // Переходим к следующему файлу
-                    }
 
-                    
+                for (let afile of audioFiles) {
                     try {
-                        const blob = file.slice(0, file.size); 
-                        let parsedData = await parseBlob(blob);                        
-                        
-                        file.common = parsedData.common;
-                    } catch (error) {
-                        console.error('Ошибка при разборе файла:', error)
-                    }
-                    
-                    validFiles.push(file); // Добавляем подходящий файл в массив
-                    this.processedCount++;
+                        const blob = afile.slice(0, afile.size);
+                        let parsedData = await parseBlob(blob);
 
-                    if (this.processedCount == this.totalFiles) {
-                        this.isLoading = false;
+                        afile.common = parsedData.common;
+                        validFiles.push(afile); // Добавляем подходящий файл в массив
+                    } catch (error) {
+                        console.error('Ошибка при разборе файла:', error);
                     }
+                    this.processedCount++;
                 }
 
-                // Если были выбраны правильные файлы, отправляем их вверх
+                this.isLoading = false;
+
                 if (validFiles.length > 0) {
                     this.$emit('files-selected', validFiles);
                     this.PlayList = true;

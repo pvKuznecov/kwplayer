@@ -20,16 +20,24 @@
                 Play: false,
                 TrackTime: { current: 0, duration: 0},
                 RepeatMode: "",
-                tableShow: false,
+                tableShow: 0,
+                showTagsData: {
+                    id: true,
+                    artist: true,
+                    album: true,
+                    title: true,
+                    duration: true
+                },
                 TagsData: {
                     title: "Название",
                     disc_no: "Диск №",
                     disc_of: "из",
-                    track_no: "Трек №",
+                    track_no: "Композиция №",
                     track_of: "из",
                     genre: "Жанр",
                     artist: "Исполнитель", 
-                    album: "Альбом"
+                    album: "Альбом",
+                    year: "Год"
                 },
             }
         },
@@ -133,7 +141,17 @@
                 TrackTimeElement.value = this.TrackTime.current;
             },
             Chng_tableShow() {
-                this.tableShow = !this.tableShow;
+                this.tableShow = (this.tableShow == 0) ? 1 : 0;
+            },
+            Upd_tableShow() {
+                let newConfig = this.showTagsData;
+                // Object.keys(newConfig)
+                for (var key in newConfig) {
+                    newConfig[key] = document.querySelector('#tabTag_' + key).checked;
+                }
+                
+                this.showTagsData = newConfig;
+                this.Chng_tableShow();
             }
         }
     }

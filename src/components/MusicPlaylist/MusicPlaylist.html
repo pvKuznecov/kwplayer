@@ -1,3 +1,22 @@
+<div v-if="tableShow === 1" class="tableShow_config">
+    <div class="tableShow_form">
+        <div class="tableShow_header">
+            <span class="header_txt">Настройка отображения плейлиста</span>
+            <span class="header_button" @click="Chng_tableShow()">X</span>
+        </div>
+        <div class="tableShow_content">
+            <div class="tableShow_content_elem">№: <input type="checkbox" name="tabTag_id" id="tabTag_id" :checked="showTagsData.id"></div>
+            <div class="tableShow_content_elem">Исполнитель: <input type="checkbox" name="tabTag_artist" id="tabTag_artist" :checked="showTagsData.artist"></div>
+            <div class="tableShow_content_elem">Альбом: <input type="checkbox" name="tabTag_album" id="tabTag_album" :checked="showTagsData.album"></div>
+            <div class="tableShow_content_elem">Название: <input type="checkbox" name="tabTag_title" id="tabTag_title" :checked="showTagsData.title"></div>
+            <div class="tableShow_content_elem">Время: <input type="checkbox" name="tabTag_duration" id="tabTag_duration" :checked="showTagsData.duration"></div>
+            <div class="tableShow_butpannel">
+                <span class="button_suc" @click="Upd_tableShow()">Сохранить</span>
+                <span class="button_err" @click="Chng_tableShow()">Отменить</span>
+            </div>
+        </div>        
+    </div>
+</div>
 <div class="playlist">
     <div class="controlpanel">
         <div class="f_cover">
@@ -75,14 +94,12 @@
                 <tbody>
                     <tr><td class="tagkey">{{TagsData.album}}:</td><td class="tagval">{{TargetTrack.common.album ?? ''}}</td></tr>
                     <tr><td class="tagkey">albumartist:</td><td class="tagval">{{TargetTrack.common.albumartist ?? ''}}</td></tr>
-                    <tr><td class="tagkey">{{TagsData.artist}}:</td><td class="tagval">{{TargetTrack.common.artist ?? ''}}</td></tr>
-                    <tr><td class="tagkey">artists:</td><td class="tagval">{{TargetTrack.common.artists ?? ''}}</td></tr>
-                    <tr><td class="tagkey">date:</td><td class="tagval">{{TargetTrack.common.date ?? ''}}</td></tr>
-                    <tr><td class="tagkey">disk:</td><td class="tagval">{{TargetTrack.common.disk ?? ''}}</td></tr>
+                    <tr><td class="tagkey">{{TagsData.artist}}:</td><td class="tagval">{{TargetTrack.common.artists ?? TargetTrack.common.artist ?? ''}}</td></tr>
+                    <tr><td class="tagkey">Диск:</td><td class="tagval">{{(TargetTrack.common.disk && TargetTrack.common.disk.no && TargetTrack.common.disk.of) ? (TargetTrack.common.disk.no + ' ' + TargetTrack.common.disk.of) : ''}}</td></tr>
                     <tr><td class="tagkey">{{TagsData.genre}}:</td><td class="tagval"><ul><li v-for="genreVal in TargetTrack.common.genre || []">{{genreVal}}</li></ul></td></tr>
                     <tr><td class="tagkey">{{TagsData.title}}:</td><td class="tagval">{{TargetTrack.common.title ?? ''}}</td></tr>
-                    <tr><td class="tagkey">track:</td><td class="tagval">{{TargetTrack.common.track ?? ''}}</td></tr>
-                    <tr><td class="tagkey">year:</td><td class="tagval">{{TargetTrack.common.year ?? ''}}</td></tr>
+                    <tr><td class="tagkey">{{TagsData.track_no}}:</td><td class="tagval">{{(TargetTrack.common.track && TargetTrack.common.track.no && TargetTrack.common.track.of) ? (TargetTrack.common.track.no + ' ' + TagsData.track_of + ' ' + TargetTrack.common.track.of) : ''}}</td></tr>
+                    <tr><td class="tagkey">{{TagsData.year}}:</td><td class="tagval">{{TargetTrack.common.year ?? ''}}</td></tr>
                 </tbody>
             </table>
             
@@ -95,6 +112,6 @@
         </div>
         <MusicUploader @files-selected="onFilesSelected" />
         <span class="playlist_tabConfig" title="Настройки отображения" @click="Chng_tableShow()">⚙️</span>
-        <MusicPlayer :tracks="FindTracks" @selected-track="onSelectedTrack" :tableshow="tableShow"/>
+        <MusicPlayer :tracks="FindTracks" @selected-track="onSelectedTrack" :tableshow="showTagsData"/>
     </div>    
 </div>
