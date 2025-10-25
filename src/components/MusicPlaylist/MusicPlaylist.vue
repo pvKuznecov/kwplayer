@@ -63,6 +63,7 @@
                             this.TrackTime = { current: 0, duration: Math.trunc(CSec / 60) + ":" + CSec % 60};
                         }
                     }, 100);
+                    console.log("TargetTrack", this.TargetTrack);
                 }
             },
             PlayerAction_Play() {
@@ -153,6 +154,18 @@
                 
                 this.showTagsData = newConfig;
                 this.Chng_tableShow();
+            },
+            onAudioEnded() {
+                const RMode = this.RepeatMode;
+            
+                if (RMode === 'one') {
+                    this.PlayerAction_Play();
+                } else {
+const indexVal = this.FindTracks.indexOf(this.TargetTrack, 0);
+
+                console.log("indexVal", indexVal);
+                }
+                
             }
         }
     }

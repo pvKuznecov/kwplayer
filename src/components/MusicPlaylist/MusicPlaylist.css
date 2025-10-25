@@ -1,12 +1,13 @@
 .playlist {
     display: flex;
     width: 1400px;
-    height: 900px;
+    height: calc(100vh - 3%);
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.411);
     box-shadow: 4px 4px 35px 0px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     /* padding: 10px; */
+    margin-top: 1%;
     margin-left: auto;
     margin-right: auto; }
 
@@ -269,7 +270,6 @@
     .playlist {
         display: block;
         width: 315px;
-        height: 98vh;
         margin-top: 5px; }
     .controlpanel {
         display: block;
@@ -299,8 +299,7 @@
 @media (min-width: 481px) and (max-width: 768px) {
     .playlist {
         display: block;
-        width: 475px;
-        height: 98vh; }
+        width: 475px; }
     .controlpanel {
         display: block;
         width: 455px;
@@ -333,8 +332,7 @@
 
 @media (min-width: 769px) and (max-width: 992px) {
     .playlist {
-        width: 760px;
-        height: 500px; }
+        width: 760px; }
     .controlpanel {
         width: 300px;
         height: 500px;
@@ -362,8 +360,7 @@
 
 @media (min-width: 993px) and (max-width: 1200px) {
     .playlist {
-        width: 970px;
-        height: 600px; }
+        width: 970px; }
     .controlpanel {
         width: 300px;
         height: 580px;
@@ -394,8 +391,7 @@
 
 @media (min-width: 1201px) and (max-width: 1439px) {
     .playlist {
-        width: 1180px;
-        height: 800px; }
+        width: 1180px; }
     .controlpanel {
         width: 300px;
         height: 780px;
@@ -416,8 +412,7 @@
 
 @media (min-width: 1440px) and (max-width: 1919px) {
     .playlist {
-        width: 1400px;
-        height: 800px; }
+        width: 1400px; }
     .controlpanel {
         width: 300px;
         height: 780px;
@@ -439,8 +434,7 @@
 
 @media (min-width: 1920px) {
     .playlist {
-        width: 1600px;
-        height: 1000px; }
+        width: 1600px; }
     .controlpanel {
         width: 300px;
         height: 980px;

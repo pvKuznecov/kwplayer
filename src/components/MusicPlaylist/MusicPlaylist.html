@@ -31,7 +31,7 @@
                 <i>{{(TrackTime && TrackTime.current !== 0) ? ShowerTime(TrackTime.current) : '00:00'}}</i> / <i>{{(TrackTime && TrackTime.duration !== 0) ? ShowerTime(TrackTime.duration) : '00:00'}}</i>
             </div>
             <div class="track_timeline">
-                <audio id="main_audio" controls :src="TargetTrack.url" style="display: none;" :volume="VolumeLvl" @timeupdate="onTimeUpdate"  />
+                <audio id="main_audio" controls @ended="onAudioEnded" :src="TargetTrack.url" style="display: none;" :volume="VolumeLvl" @timeupdate="onTimeUpdate"  />
                 <input id="main_tracktime" class="track_rangetime" type="range" min="0" value="0" @change="Chng_TrackRangeTime()" />
             </div>
             <div class="track_buttons">
