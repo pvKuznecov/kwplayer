@@ -15,7 +15,9 @@
                 isLoading: false,
                 totalFiles: 0,
                 processedCount: 0,
-                MAX_FILE_SIZE: 100 * 1024 * 1024, // 100MB
+                MAX_FILE_SIZE: 100 * 1024 * 1024, // 100MB,
+                MAX_PLAYLIST_SIZE: 1000 * 1024 * 1024, // 1000MB,
+                curFilesSize: 0,
             }
         },
         methods: {
@@ -25,6 +27,15 @@
 
                 if (audioFiles.length === 0) {
                     this.showError("Не было выбрано ни одного аудиофайла.");
+                    this.resetInput(event.target);
+                    return;
+                }
+
+                let cSize = 0;
+                files.forEach(function(item) { cSize += item.size; })
+
+                if (cSize > this.MAX_PLAYLIST_SIZE) {
+                    this.showError("Превышен лимит доступной памяти! Максимальный размер - " + (this.MAX_PLAYLIST_SIZE / 1024 / 1024) + "MB.");
                     this.resetInput(event.target);
                     return;
                 }
