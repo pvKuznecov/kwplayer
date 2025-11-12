@@ -18,6 +18,7 @@
         </div>        
     </div>
 </div>
+
 <div class="playlist">
     <div class="controlpanel">
         <div class="f_cover">
@@ -34,7 +35,7 @@
             </div>
             <div class="track_timeline">
                 <audio id="main_audio" controls @ended="onAudioEnded" :src="(currentTrack) ? currentTrack.url : ''" style="display: none;" :volume="VolumeLvl" @timeupdate="onTimeUpdate"  />
-                <input id="main_tracktime" class="track_rangetime" type="range" min="0" value="0" @change="Chng_TrackRangeTime()" />
+                <input id="main_tracktime" class="track_rangetime" type="range" min="0" :max="TrackTime.duration" value="0" @change="Chng_TrackRangeTime()" />
             </div>
             <div class="track_buttons">
                 <div class="track_buttons_elem" @click="PlayerAction_PrevTrk()">
@@ -124,11 +125,7 @@
         </div>
     </div>    
     <div class="playlist_arr">
-        <div class="playlist_name">
-            <!-- <div v-if="EditPlaylistMode"><input type="text" name="playlist_name" id="playlist_name"></div>
-            <div v-else>[ {{Playlist.name}} ]</div> -->
-            Новый плейлист
-        </div>
+        <div class="playlist_name">Новый плейлист</div>
         <MusicUploader @files-selected="onFilesSelected" />
         <span class="playlist_tabConfig" title="Настройки отображения" @click="Chng_tableShow()">⚙️</span>
         <div class="music_playlist">
