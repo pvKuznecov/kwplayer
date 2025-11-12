@@ -1,0 +1,93 @@
+.music_player {
+    display: block;
+    width: 99%;
+    height: calc(100% - 34px);
+    margin: 0 auto 5px;
+    border-radius: 5px;
+    padding: 1px;
+    background-color: white;
+    box-shadow: -1px -1px 33px 4px rgba(34, 60, 80, 0.28) inset;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.music_player table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-header {
+    position: sticky;
+    top: 0;
+    background-color: rgb(243, 243, 243);
+    z-index: 10;
+}
+
+.table-header th {
+    padding: 8px 4px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.track-row {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.track-row:hover {
+    background-color: rgba(227, 255, 160, 0.2);
+}
+
+.track-row.active {
+    background-color: rgb(227, 250, 160);
+    font-weight: 600;
+}
+
+.music_player td {
+    padding: 6px 4px;
+    text-align: left;
+    font-size: 12px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.track-number {
+    width: 40px;
+    text-align: center;
+}
+
+.track-artist {
+    width: 150px;
+}
+
+.track-album {
+    width: 120px;
+}
+
+.track-title {
+    text-align: left;
+}
+
+.track-duration {
+    width: 60px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    color: #666;
+    text-align: center;
+}
+
+.empty-hint {
+    font-size: 11px;
+    color: #999;
+    margin-top: 5px;
+}
+
