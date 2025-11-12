@@ -2,26 +2,21 @@
 <style src="./MusicPlayer.css"></style>
 <script>
     import MusicUploader from '../MusicUploader/MusicUploader.vue';
-    // import MusicPlayer from '../MusicPlayer/MusicPlayer.vue';
 
     export default {
         name: "MusicPlayer",
         components: {
             MusicUploader,
-            // MusicPlayer
         },
         data() {
             return {
-                Playlist: { name: "New playlist" },
-                // currentTrack: null,
                 currentIndex: 0,
                 TargetTrack: false,
                 FindTracks: [],
-                // EditPlaylistMode: false,
                 VolumeLvl: 0.5,
                 Play: false,
                 TrackTime: { current: 0, duration: 0},
-                RepeatMode: "",
+                RepeatMode: "all",
                 tableShow: 0,
                 audioDurations: {}, // Объект для "длительностей"
                 tableShowConfig: {
@@ -219,14 +214,14 @@
                         AudioElement.loop = false;
                         break;
                     default:
-                        this.RepeatMode = "";
+                        this.RepeatMode = "all";
                         AudioElement.loop = false;
                         break;
                 }
             },
             Chng_TrackRangeTime() {
-                let AudioElement = document.querySelector('#main_audio');
-                let TrackTimeElement = document.querySelector('#main_tracktime');
+                const AudioElement = document.querySelector('#main_audio');
+                const TrackTimeElement = document.querySelector('#main_tracktime');
 
                 // this.TrackTime.current = (TrackTimeElement) ? TrackTimeElement.value : 0;
                 AudioElement.currentTime = TrackTimeElement.value;
@@ -274,9 +269,7 @@
                 if (RMode === 'one') {
                     this.PlayerAction_Play();
                 } else {
-const indexVal = this.FindTracks.indexOf(this.TargetTrack, 0);
-
-                console.log("indexVal", indexVal);
+                    this.PlayerAction_NextTrk();
                 }
                 
             },
