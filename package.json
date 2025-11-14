@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "bootstrap-icons": "^1.13.1",
     "core-js": "^3.8.3",
     "music-metadata": "^11.9.0",
     "vue": "^3.5.22",
