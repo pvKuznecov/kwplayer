@@ -14,7 +14,10 @@
                 TargetTrack: false,
                 FindTracks: [],
                 VolumeLvl: 0.5,
+                VolumeLvl_save: 0.5,
                 Play: false,
+                Shuffle: false,
+                SilentMode: false,
                 TrackTime: { current: 0, duration: 0},
                 RepeatMode: "all",
                 tableShow: 0,
@@ -199,6 +202,21 @@
                     }, 500);
                     
                 }
+            },
+            Chng_Shuffle() {
+                this.Shuffle = !this.Shuffle;
+            },
+            Chng_SilentMode() {
+                const Silent = this.SilentMode;
+
+                if (!Silent) {
+                    this.VolumeLvl_save = this.VolumeLvl;
+                    this.VolumeLvl = 0;
+                } else {
+                    this.VolumeLvl = this.VolumeLvl_save;
+                }
+
+                this.SilentMode = !Silent;
             },
             Chng_RepeatMode() {
                 let AudioElement = document.querySelector('#main_audio');
