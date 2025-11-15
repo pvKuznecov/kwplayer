@@ -117,6 +117,10 @@
                     // this.$emit("selected-track", track);
                 }
             },
+            GetRandom_Ind () {
+                const maxVal = (this.preparedTracks) ? this.preparedTracks.length : 0;
+                return Math.floor(Math.random() * maxVal);
+            },
             // SelectedTrack(track) {
             //     if (!this.currentTrack || this.currentTrack.id !== track.id) {
             //         this.currentTrack = track;
@@ -171,7 +175,10 @@
                 if (preplist && preplist.length > 0) {
                     this.PlayerAction_Pause();
 
-                    if (curindex == 0) {
+                    if (this.Shuffle) {
+                        this.currentIndex = this.GetRandom_Ind();
+                        console.log("new curindex", this.Shuffle);
+                    } else if (curindex == 0) {
                         this.currentIndex = preplist.length - 1;
                     } else {
                         this.currentIndex = curindex - 1;
@@ -191,7 +198,10 @@
                 if (preplist && preplist.length > 0) {
                     this.PlayerAction_Pause();
 
-                    if (curindex == (preplist.length - 1)) {
+                    if (this.Shuffle) {
+                        this.currentIndex = this.GetRandom_Ind();
+                        console.log("new curindex", this.Shuffle);
+                    } else if (curindex == (preplist.length - 1)) {
                         this.currentIndex = 0;
                     } else {
                         this.currentIndex = curindex + 1;
